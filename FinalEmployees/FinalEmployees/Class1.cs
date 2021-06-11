@@ -19,7 +19,7 @@ namespace FinalEmployees{
         //login process for the manager
         public bool managerLogin(string ID, string Pass){
             string locked = "True";
-            dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+            dataConnect = new SqlConnection(" ");
             dataConnect.Open();
             dataCommand = new SqlCommand("select ManagerID, Locked from Manager where ManagerID = '" + ID + "'", dataConnect);
             DataReader = dataCommand.ExecuteReader();
@@ -70,7 +70,7 @@ namespace FinalEmployees{
         //login process for employees
         public bool employeeLogin(string ID, string Pass){
             string locked = "True";
-            dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+            dataConnect = new SqlConnection(" ");
             dataConnect.Open();
             dataCommand = new SqlCommand("select EmployeeID, Locked from Employee where EmployeeID = '" + ID + "'", dataConnect);
             DataReader = dataCommand.ExecuteReader();
@@ -110,7 +110,7 @@ namespace FinalEmployees{
         public bool forgotPassword(string ID, string Email){
             Random ran = new Random();
             int newPass = ran.Next(12345, 99999);
-            dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+            dataConnect = new SqlConnection(" ");
             dataConnect.Open();
             dataCommand = new SqlCommand("select EmployeeID from Employee where EmployeeID = '" + ID + "'", dataConnect);
             DataReader = dataCommand.ExecuteReader();
@@ -134,12 +134,12 @@ namespace FinalEmployees{
                                 //Sends an email of the reset password
                                 Smtp_Server = new SmtpClient();
                                 Smtp_Server.UseDefaultCredentials = false;
-                                Smtp_Server.Credentials = new System.Net.NetworkCredential("m.Andreas.wall@gmail.com", "Trueeverybody3");
+                                Smtp_Server.Credentials = new System.Net.NetworkCredential("");
                                 Smtp_Server.Port = 587;
                                 Smtp_Server.EnableSsl = true;
                                 Smtp_Server.Host = "smtp.gmail.com";
                                 e_mail = new MailMessage();
-                                e_mail.From = new MailAddress("m.Andreas.wall@gmail.com");
+                                e_mail.From = new MailAddress("");
                                 e_mail.To.Add(Email);
                                 e_mail.Subject = "Account Password Reset";
                                 e_mail.Body = "Hello, your password has been changed to R" + newPass + ".";
@@ -158,7 +158,7 @@ namespace FinalEmployees{
         //get special of the week
         public void getSpecial(){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select * from DealofWeek", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -167,7 +167,7 @@ namespace FinalEmployees{
         //updates the special of the week
         public void updateSpecial(string deal){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("update DealofWeek set Deal = '" + deal + "'", dataConnect);
                 DataReader = dataCommand.ExecuteReader();}
@@ -175,7 +175,7 @@ namespace FinalEmployees{
         //Loads the schedule table
         public void getSchedule(DataTable table){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 SqlCommand dataCommand = new SqlCommand("select s.ScheduleEntryID, (e.FirstName + ' ' + e.LastName) as 'Name', s.Position, s.Shift from Schedules s join Employee e on e.EmployeeID = s.EmployeeID", dataConnect);
                 dataAdapter.Dispose();
@@ -186,7 +186,7 @@ namespace FinalEmployees{
         //Loads employee's information
         public void EmployeeInfo(string ID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select EmployeeID, Password, FirstName, LastName, Phone, Email, Salary from Employee where EmployeeID = '" + ID + "'", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -196,7 +196,7 @@ namespace FinalEmployees{
         //edits the inforamtion of the employee
         public void editInformation(string ID, string Password, string FirstName, string LastName, string Phone, string Email){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("update Employee set Password = '" + Password + "', FirstName = '" + FirstName + "', LastName = '" + LastName + "', Phone = '" + Phone + "', Email = '" + Email + "' where EmployeeID = '" + ID + "'", dataConnect);
                 DataReader = dataCommand.ExecuteReader();}
@@ -205,7 +205,7 @@ namespace FinalEmployees{
         //Submit request off
         public void RequestOff(string ID, string Shift, string Request, string Reason){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("insert into RequestOff values ('" + ID + "','" + Shift + "','" + Request + "','" + Reason + "', 'awaiting confirmation')", dataConnect);
                 DataReader = dataCommand.ExecuteReader();}
@@ -214,7 +214,7 @@ namespace FinalEmployees{
         //shows request made by specific employee
         public void showEmployeeRequest(string ID){
             try {
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select r.RequestID, r.EmployeeID, (e.FirstName + ' ' + e.LastName) as 'Name', r.Shift, r.Request, r.Reason, r.Status from RequestOff r join Employee e on e.EmployeeID = r.EmployeeID  where r.EmployeeID = '" + ID + "'", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -225,7 +225,7 @@ namespace FinalEmployees{
         //Submit request change
         public void RequestChange(string PersonalID, string DesiredID, string ID, string Reason){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("insert into ScheduleChanges values (" + PersonalID + "," + DesiredID + ",'" + ID + "','Change','" + Reason + "', 'awaiting confirmation')", dataConnect);
                 DataReader = dataCommand.ExecuteReader();
@@ -234,7 +234,7 @@ namespace FinalEmployees{
         //shows changes requested by specific employee
         public void showEmployeeChange(string ID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select c.ChangeID, c.PersonalScheduleID, c.RequestedScheduleID, c.EmployeeID, (e.FirstName + ' ' + e.LastName) as 'Name', c.Request, c.Reason, c.Status from ScheduleChanges c join Employee e on e.EmployeeID = c.EmployeeID  where c.EmployeeID = '" + ID + "'", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -244,7 +244,7 @@ namespace FinalEmployees{
         //shows the manager all requested schedule changes
         public void showChanges(){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select c.ChangeID, c.PersonalScheduleID, c.RequestedScheduleID, c.EmployeeID, (e.FirstName + ' ' + e.LastName) as 'Name', c.Request, c.Reason, c.Status from ScheduleChanges c join Employee e on e.EmployeeID = c.EmployeeID ", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -254,7 +254,7 @@ namespace FinalEmployees{
         //shows the manager all schedule requests
         public void showRequest(){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select r.RequestID, r.EmployeeID, (e.FirstName + ' ' + e.LastName) as 'Name', r.Shift, r.Request, r.Reason, r.Status from RequestOff r join Employee e on e.EmployeeID = r.EmployeeID", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -265,7 +265,7 @@ namespace FinalEmployees{
         public int countChanges(){
             int count;
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select COUNT(*) from ScheduleChanges", dataConnect);}
             catch { MessageBox.Show("Connection to the database has been lost"); }
@@ -275,7 +275,7 @@ namespace FinalEmployees{
         public int countRequest(){
             int count;
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select COUNT(*) from RequestOff", dataConnect);
             }
@@ -285,7 +285,7 @@ namespace FinalEmployees{
         //deletes the requested change
         public void deleteChnage(string ID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("delete from ScheduleChanges where ChangeID = '" + ID + "'", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();}
@@ -294,7 +294,7 @@ namespace FinalEmployees{
         //deletes the request
         public void deleteRequest(string ID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("delete from RequestOff where RequestID = '" + ID + "'", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();
@@ -303,7 +303,7 @@ namespace FinalEmployees{
         //rejects the change
         public void rejectChange(string ID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("update ScheduleChanges set Status = 'Rejected' where ChangeID = '" + ID + "'", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();}
@@ -312,7 +312,7 @@ namespace FinalEmployees{
         //rejects the request
         public void rejectRequest(string ID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("update RequestOff set Status = 'Rejected' where RequestID = '" + ID + "'", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();}
@@ -321,7 +321,7 @@ namespace FinalEmployees{
         //finds employeesID
         public void findEmployeeID(string ID, DataTable table){
             try {
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select EmployeeID from Schedules where ScheduleEntryID = '" + ID + "'", dataConnect);
                 dataAdapter.Dispose();
@@ -333,7 +333,7 @@ namespace FinalEmployees{
         //insert new entry into the schedule table
         public void insertSchedule(string ID, string postion, string shift){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("insert into Schedules values ('" + ID + "','" + postion + "','" + shift + "')", dataConnect);
                 DataReader = dataCommand.ExecuteReader();}
@@ -342,7 +342,7 @@ namespace FinalEmployees{
         //updates the schedule entry selected
         public void updateSchedule(string employeeID, string postion, string shift, string scheduleID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("update Schedules set EmployeeID = '" + employeeID + "', Position = '" + postion + "', Shift = '" + shift + "' where ScheduleEntryID = '" + scheduleID + "'", dataConnect);
                 DataReader = dataCommand.ExecuteReader();}
@@ -351,7 +351,7 @@ namespace FinalEmployees{
         //deletes the schedule entry selected
         public void deleteScheduleEntry(string scheduleID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("delete from Schedules where ScheduleEntryID = '" + scheduleID + "'", dataConnect);
                 DataReader = dataCommand.ExecuteReader();}
@@ -360,7 +360,7 @@ namespace FinalEmployees{
         //updates the schedule based on a schedule change request
         public void updateScheduleChange(string employeeID, string scheduleID){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("update Schedules set employeeID = '" + employeeID + "' where ScheduleEntryID = '" + scheduleID + "'", dataConnect);
                 DataReader = dataCommand.ExecuteReader();}
@@ -369,7 +369,7 @@ namespace FinalEmployees{
         //Loads the schedule table
         public void viewSchedule(DataTable table){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 SqlCommand dataCommand = new SqlCommand("select s.ScheduleEntryID, s.EmployeeID, (e.FirstName + ' ' + e.LastName) as 'Name', s.Position, s.Shift from Schedules s join Employee e on e.EmployeeID = s.EmployeeID", dataConnect);
                 dataAdapter = new SqlDataAdapter();
