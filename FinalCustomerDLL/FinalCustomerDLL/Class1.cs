@@ -16,7 +16,7 @@ namespace FinalCustomerDLL{
         //pulls up entire store listing of products
         public void connect(){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select AlbumName, Band, Label from Products order by Band, AlbumName", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -32,7 +32,7 @@ namespace FinalCustomerDLL{
         //pulls up selected album
         public void albumSearch(string name){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select p.*, v.VariantPrice, v.VariantStock from Products p join variant v on p.ASIN = v.VariantID where AlbumName = '" + name + "' order by p.Band ", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -41,7 +41,7 @@ namespace FinalCustomerDLL{
         //view cart
         public void viewCart(){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select p.AlbumName, c.ItemID, c.Amount,(c.Amount * p.Price) as 'NormalTotal', c.altAmount, (c.altAmount * v.VariantPrice) as 'AltTotal' from Cart c join Products p on c.ItemID = p.ASIN join variant v on c.ItemID = v.VariantID", dataConnect);
                 dataAdapter = new SqlDataAdapter();
@@ -51,7 +51,7 @@ namespace FinalCustomerDLL{
         public void addCart(string Item, bool alt){
             try {
                 bool inCart = false;
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select ItemID from Cart where ItemID = '" + Item + "'", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();
@@ -99,7 +99,7 @@ namespace FinalCustomerDLL{
         //deletes cart after purchese
         public void deleteCart() {
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("delete from Cart", dataConnect);
                 dataCommand.ExecuteReader();}
@@ -108,7 +108,7 @@ namespace FinalCustomerDLL{
         public int countProducts(){
             int count;
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select COUNT(*) from Products", dataConnect);}
             catch { MessageBox.Show("Connection to the database has been lost"); }
@@ -118,7 +118,7 @@ namespace FinalCustomerDLL{
         public int countCart() {
             int count;
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select COUNT(*) from Cart", dataConnect);}
             catch { MessageBox.Show("Connection to the database has been lost"); }
@@ -127,7 +127,7 @@ namespace FinalCustomerDLL{
         //safely removes the item from the cart and adds it back to the inventory
         public void removeFromCart(string Item, bool alt, int amount) {
             try {
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 SqlDataReader DataReader;
                 try {
@@ -150,7 +150,7 @@ namespace FinalCustomerDLL{
         //deletes an entry from the cart if the product count is 0 in the cart
         public void deleteFromCart(string id){
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("delete from Cart where ItemID = '" + id + "'", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();}
@@ -158,7 +158,7 @@ namespace FinalCustomerDLL{
         }
         //creates the order documentation
         public void makeOrder(string tax, string price, int amount){
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("insert into Orders values ('" + tax + "','" + price +"'," + amount + ")", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();}
@@ -166,7 +166,7 @@ namespace FinalCustomerDLL{
         public int countOrders(){
             int count;
             try{
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("select COUNT(*) from Orders", dataConnect);
             }catch { MessageBox.Show("Connection to the database has been lost"); }
@@ -174,7 +174,7 @@ namespace FinalCustomerDLL{
             return count;}
         //fill the orderdetails with the information from the cart
         public void fillOrder(int orderID, string name, int amount, string price, int altAmount, string altPrice){
-                dataConnect = new SqlConnection("Server = cstnt.tstc.edu; Database = wallM_Final; User Id = mawall; password = 1175037");
+                dataConnect = new SqlConnection(" ");
                 dataConnect.Open();
                 dataCommand = new SqlCommand("insert into OrderDetails values (" + orderID + ",'" + name + "'," + amount + "," + price + "," + altAmount + "," + altPrice + ")", dataConnect);
                 SqlDataReader DataReader = dataCommand.ExecuteReader();}
