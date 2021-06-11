@@ -1,0 +1,6 @@
+C:\Users\Owner\Desktop\FinalEmployees\FinalEmployees\bin\Debug\FinalEmployees.dll
+C:\Users\Owner\Desktop\FinalEmployees\FinalEmployees\bin\Debug\FinalEmployees.pdb
+C:\Users\Owner\Desktop\FinalEmployees\FinalEmployees\obj\Debug\FinalEmployees.csprojAssemblyReference.cache
+C:\Users\Owner\Desktop\FinalEmployees\FinalEmployees\obj\Debug\FinalEmployees.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\FinalEmployees\FinalEmployees\obj\Debug\FinalEmployees.dll
+C:\Users\Owner\Desktop\FinalEmployees\FinalEmployees\obj\Debug\FinalEmployees.pdb

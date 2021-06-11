@@ -1,0 +1,11 @@
+C:\Users\Owner\Desktop\Final\bin\Debug\Final.exe.config
+C:\Users\Owner\Desktop\Final\bin\Debug\Final.exe
+C:\Users\Owner\Desktop\Final\bin\Debug\Final.pdb
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.csprojAssemblyReference.cache
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.SplashScreen.resources
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.Properties.Resources.resources
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.exe
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.pdb
+C:\Users\Owner\Desktop\Final\obj\Debug\Final.frmLogin.resources

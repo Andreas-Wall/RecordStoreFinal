@@ -1,0 +1,12 @@
+C:\Users\Owner\Desktop\FinalProductsDLL\FinalProductsDLL\bin\Debug\FinalProductsDLL.dll
+C:\Users\Owner\Desktop\FinalProductsDLL\FinalProductsDLL\bin\Debug\FinalProductsDLL.pdb
+C:\Users\Owner\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.csprojAssemblyReference.cache
+C:\Users\Owner\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.dll
+C:\Users\Owner\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.pdb
+T:\Users\mawall\Desktop\FinalProductsDLL\FinalProductsDLL\bin\Debug\FinalProductsDLL.dll
+T:\Users\mawall\Desktop\FinalProductsDLL\FinalProductsDLL\bin\Debug\FinalProductsDLL.pdb
+T:\Users\mawall\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.csprojAssemblyReference.cache
+T:\Users\mawall\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.csproj.CoreCompileInputs.cache
+T:\Users\mawall\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.dll
+T:\Users\mawall\Desktop\FinalProductsDLL\FinalProductsDLL\obj\Debug\FinalProductsDLL.pdb
